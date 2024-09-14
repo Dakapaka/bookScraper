@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predviđanje cijene knjige</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], input[type="radio"] {
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 18px);
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .result-container {
+            text-align: center;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predviđanje cijene knjige</h1>
+        <form action="/predict" method="post">
+            <label for="author">Autor:</label>
+            <input type="text" id="author" name="author" required>
+
+            <label for="publisher">Izdavač:</label>
+            <input type="text" id="publisher" name="publisher" required>
+
+            <label for="genre">Žanr:</label>
+            <input type="text" id="genre" name="genre" required>
+
+            <label for="year">Godina izdanja:</label>
+            <input type="number" id="year" name="year" required>
+
+            <label for="pages">Broj stranica:</label>
+            <input type="number" id="pages" name="pages" required>
+
+            <label for="binding">Povez:</label>
+            <input type="text" id="binding" name="binding" required>
+
+            <label for="format">Format:</label>
+            <input type="text" id="format" name="format" required>
+
+            <label>Izaberi model:</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" id="linear_regression" name="model_choice" value="linear_regression" required>
+                    Linearna regresija
+                </label>
+                <label>
+                    <input type="radio" id="logistic_regression_ovr" name="model_choice" value="logistic_regression_ovr">
+                    Logistička regresija (jedan nasuprot svima)
+                </label>
+                <label>
+                    <input type="radio" id="logistic_regression_multinomial" name="model_choice" value="logistic_regression_multinomial">
+                    Logistička regresija (Multinomijalna)
+                </label>
+            </div>
+
+            <input type="submit" value="Predviđanje">
+        </form>
+    </div>
+</body>
+</html>
